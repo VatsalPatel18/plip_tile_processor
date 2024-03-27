@@ -18,3 +18,14 @@ To get started, clone this repository to your local machine:
 
 ```bash
 git clone git@github.com:VatsalPatel18/plip_tile_processor.git
+cd plip_tile_processor
+
+### Using Docker
+
+Building thte Docker Image
+
+```bash
+docker build -t plip_processor:latest .
+
+
+
