@@ -12,6 +12,18 @@ These instructions will cover usage information and for the Docker container as 
 - Python 3.8 or later
 - Git
 
+## Method 1 
+If you are directly looking to work easily , just pull the docker and run it , or else you can build it . 
+
+### Using Pre-Build Docker 
+
+You can pull the pre-built Docker image from Docker Hub using the following command:
+
+```bash
+docker pull vatsalpatel18/plip_tile_processor:latest
+```
+## Method 2
+
 ### Clone the Repository
 
 To get started, clone this repository to your local machine:
@@ -21,7 +33,9 @@ git clone git@github.com:VatsalPatel18/plip_tile_processor.git
 cd plip_tile_processor
 ```
 
+
 ### Using Docker
+This reamains commmon , if you pull or use it directly
 
 Building thte Docker Image
 
