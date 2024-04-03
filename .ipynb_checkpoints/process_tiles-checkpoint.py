@@ -10,7 +10,7 @@ def main(csv_file, root_dir, save_dir):
 
     wsi_data = {}
     for file in os.listdir(root_dir):
-        fol_p = os.path.join(root_dir, file, file)
+        fol_p = os.path.join(root_dir, file)
         f2lp_t = len(os.listdir(fol_p))
         wsi_data[file] = f2lp_t
 

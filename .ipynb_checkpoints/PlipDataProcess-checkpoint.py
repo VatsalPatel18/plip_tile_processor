@@ -30,7 +30,7 @@ class PlipDataProcess(torch.utils.data.Dataset):
 
     def __getitem__(self, idx):
         file = self.files[idx]
-        tiles_path = os.path.join(self.root_dir, file, file)
+        tiles_path = os.path.join(self.root_dir, file,)
         tiles = [tile for tile in os.listdir(tiles_path) if tile != '.ipynb_checkpoints']
         selected_tiles = random.sample(tiles, min(self.num_tiles_per_patient, len(tiles)))
 
