@@ -34,7 +34,15 @@ class PlipDataProcess(torch.utils.data.Dataset):
         tiles = [tile for tile in os.listdir(tiles_path) if tile != '.ipynb_checkpoints']
         selected_tiles = random.sample(tiles, min(self.num_tiles_per_patient, len(tiles)))
 
-        file_data = torch.tensor(self.df.loc[f'{file}-01'].values, dtype=torch.float32)
+        #file_data = torch.tensor(self.df.loc[f'{file}-01'].values, dtype=torch.float32)
+        
+        try:
+            file_data = torch.tensor(self.df.loc[f'{file}-01'].values, dtype=torch.float32)
+        except KeyError:
+            # If the file is not found in the dataframe, create a tensor of zeros
+            # Shape is inferred from the other rows in the dataframe
+            num_features = self.df.shape[1]
+            file_data = torch.zeros(num_features, dtype=torch.float32)
 
         with ThreadPoolExecutor(max_workers=self.max_workers) as executor:
             for tile_name in selected_tiles:

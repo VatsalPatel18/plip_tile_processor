@@ -6,22 +6,14 @@ import argparse
 
 def main(csv_file, root_dir, save_dir):
     df4 = pd.read_csv(csv_file).set_index('PatientID')
-    there = set(list(x[:-3] for x in df4.index))
 
-    wsi_data = {}
-    for file in os.listdir(root_dir):
-        fol_p = os.path.join(root_dir, file)
-        f2lp_t = len(os.listdir(fol_p))
-        wsi_data[file] = f2lp_t
-
-    wsi_there = set(wsi_data.keys())
-    use = list(there.intersection(wsi_there))
+    files = [file for file in os.listdir(root_dir) if os.path.isdir(os.path.join(root_dir, file))]
 
     img_processor = CLIPImageProcessor.from_pretrained("./plip/")
 
     dataset = PlipDataProcess(
         root_dir=root_dir,
-        files=use,
+        files=files,
         df=df4,
         img_processor=img_processor,
         num_tiles_per_patient=2000,
